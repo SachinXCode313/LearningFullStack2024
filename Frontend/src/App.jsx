@@ -4,37 +4,17 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
 import LoginForm from './LoginForm.jsx'
-import Display from './Display.jsx'
-import Car from './Car.jsx'
+import {Route, Routes} from 'react-router-dom'
 
 
 function App() {
 
-  // const [count, setCount] = useState(0);
-
-  // useEffect(() => {
-  //   console.log("Hey........")
-  // }, [count]); // <- add empty brackets here
-
-  // const array = [34,56,78]
-
-
-
-
-
-
-  
-  
-
   return (
     <>
-      {/* <h1>Coffee With Sachin :)</h1> */}
-      {/* <button onClick={() => setCount((count)=> count+1)}></button>
-      <h1>I've rendered {count} times!</h1>; */}
+      <Routes>
+        <Route path='/' element= {<LoginForm></LoginForm>}></Route>
+      </Routes>
 
-     <LoginForm/>
-      <Display/>  
-      {/* <Car/> */}
     </>
   )
 }

@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 router.use(express.json());
+router.use(cors());
 
 
 //To Connect Node.js to Google Sheet
@@ -35,6 +36,7 @@ router.get("/api/sheet",async (req,res) => {
     // values.forEach((value) => {
     //     res.send(value)
     // })
+    console.log(values)
     res.send(values)
 })
 
