@@ -1,16 +1,23 @@
-import express from 'express'
-// const express = require('express');
-
-import GoogleSheetConnectivity from "./src/GoogleSheetConnectivity.js"
-
-import {google} from 'googleapis'
-
+import express, { Router } from 'express'
+import connectDB from './src/databases/db.js'
+import dotenv from 'dotenv';
+import routers from './src/routes/routes.js';
+import cors from 'cors'
 const app = express()
+dotenv.config()
 
-app.use(GoogleSheetConnectivity)
+connectDB();
+app.use(express.json())
+app.use(cors())
+app.use('/api',routers)
 
-app.listen(3000 , ()=> {
+app.listen(3000, ()=> {
     console.log("Server is running on 3000 port")
 }) 
+
+
+
+
+
 
 
