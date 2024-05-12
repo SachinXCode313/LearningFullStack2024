@@ -3,6 +3,8 @@ import UserModel from "../models/User.js";
 const getUser = async(req,res) => {
     try{
         const user = await UserModel.find()
+        console.log(user)
+        console.log(typeof(user))
         res.send(user)
     }catch(error){
         console.log(error)
@@ -29,7 +31,8 @@ const updateUser = async (req,res) => {
     try{
         const userID = req.params.id
         const updatedUser = await UserModel.findByIdAndUpdate(userID,req.body,{new : true});
-        res.send(updatedUser);
+        res.send([updatedUser]);
+        console.log(updateUser)
     }catch(error){
         console.log(error)
     }

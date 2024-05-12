@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './style/User.css'
+import User from './User.jsx'
 
 function CreateUser() {
   const [user, setUser] = useState('')
@@ -38,7 +39,7 @@ function CreateUser() {
     }
     try {
       const res = await axios.post('/api/create', Data)
-
+      fetchUsers()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -58,6 +59,7 @@ function CreateUser() {
         <button type="submit">Submit</button>
       </form>
 
+      <User fetchUsers={fetchUsers} handleSubmit={handleSubmit}/>  
 
       {/* <button onClick={sendDataToBackend}>submit 2</button> */}
     </>

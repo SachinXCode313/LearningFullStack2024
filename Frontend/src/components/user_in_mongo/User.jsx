@@ -1,14 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import './style/User.css'
-import UpdateUser from "./UpdateUser"
 
-function User() {
+
+function User({fetchUsers,handleSubmit}) {
 
     const [usersList, setUsersList] = useState([])
     const [editId, setEditId] = useState(-1)
     const [user, setUser] = useState('')
     const [pass, setPass] = useState('')
+    const [searchId,setSearchId] = useState('')
+
 
 
 
@@ -25,7 +27,7 @@ function User() {
         }
         try {
             const res = await axios.put(`/api/update/${editId}`, Data)
-            // setUsersList(res.data)
+            
             setUsersList(prevUsersList => prevUsersList.map(user => {
                 if (user._id === editId) {
                     return res.data; // Assuming res.data is the updated user object
@@ -36,9 +38,12 @@ function User() {
         } catch (err) {
             console.log(err)
         }
-
         setEditId(-1)
     }
+
+    // const handleSearch = () => {
+    //     const searchUser = usersList.find(user => )
+    // }
 
     useEffect(() => {
         axios.get('/api/get')
@@ -55,6 +60,8 @@ function User() {
         <>
             <h2>UserData</h2>
             <p>No of users : {usersList.length}</p>
+            {/* <input type="text" placeholder="Search By User ID" onChange={(e)=> setSearchId(e.target.value)}/>
+            <button onClick={handleSearch}>Search</button> */}
 
             <div className="App">
                 <table>
